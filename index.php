@@ -8,7 +8,7 @@
 <body>
     <form action="access.php" method="post">
         <div class="container">
-            <h2 class="form-title">Registration Form</h2>
+            <h2 class="form-title">Registration From Submitting Issue</h2>
             <br>
             <br>
             <div class="form-input">
