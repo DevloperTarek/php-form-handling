@@ -8,6 +8,14 @@
 
    $conn = new mysqli($host,$username,$password,$database);
 
+   $connSuff = new mysqli($host,$username,$password,$database);
+
+   if($connSuff ->connect_error){
+        die('Connection Failed') . $connSuff -> connect_error;
+   }else{
+        echo "Connection Sucessfully";
+   }
+
 //    Check Connection
 
 if($conn->connect_error){
