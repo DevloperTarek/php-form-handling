@@ -28,7 +28,6 @@ $password_hashing = password_hash($password, PASSWORD_DEFAULT);
 $sql = "insert into registrationdb(name,email,password) values (?,?,?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('sass',$name,$email,$password_hashing);
-
 if($stmt->execute()){
     echo "Registration Successfully Send";
 }else{

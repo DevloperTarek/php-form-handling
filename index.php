@@ -11,6 +11,7 @@
             <h2 class="form-title">Registration From Submitting Issue</h2>
             <br>
             <br>
+            <br>
             <div class="form-input">
                 <label for="name">Name *</label>
                 <input type="text" name="name" id="name" require placeholder="Enter Your Full Name" />
@@ -26,5 +27,21 @@
             <input type="submit" value="send" />
         </div>
     </form>
+
+    <?php 
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "registrationdb";
+
+        // Database Connection
+        $conn = new mysqli($host,$username,$password,$database);
+        // Connection Checking
+        if($conn->connect_error){
+            die("Connection Failed" . $conn->connect_error);
+        }else{
+            echo "Database Connection Successfully";
+        }
+    ?>
 </body>
 </html>
