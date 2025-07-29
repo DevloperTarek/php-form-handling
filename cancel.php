@@ -1,14 +1,15 @@
 
 <?php
-    // Server Connection
-    $server = 'localhost';
-    $username = "root";
-    $password = "";
-    $database = "registrationdb";
+    $i_want_to_read_this_file = "index.php";
 
-    try{
-        $conn = new PDO("mysql:host=$server",$username,$password,$database);
-        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "CREATE DATABASE myDBPDO";
+    if(file_exists($i_want_to_read_this_file)){
+        $file_open = fopen($i_want_to_read_this_file , "r");
+        $file_read = fread($file_open, filesize($i_want_to_read_this_file));
+        fclose($file_open);
+
+        echo "The File content is :" . "<br>";
+        echo nl2br($file_read);
+    }else{
+        echo "There Haven't any File or anything";
     }
 ?>
