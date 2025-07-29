@@ -1,47 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registratoin Form</title>
-</head>
-<body>
-    <form action="access.php" method="post">
-        <div class="container">
-            <h2 class="form-title">Registration From Submitting Issue</h2>
-            <br>
-            <br>
-            <br>
-            <div class="form-input">
-                <label for="name">Name *</label>
-                <input type="text" name="name" id="name" require placeholder="Enter Your Full Name" />
-            </div>
-            <div class="form-input">
-                <label for="email">Email *</label>
-                <input type="email" name="email" id="email" require placeholder="Enter Your Email" />
-            </div>
-            <div class="form-input">
-                <label for="password">Password *</label>
-                <input type="password" name="password" id="password" require placeholder="Enter Password" />
-            </div>
-            <input type="submit" value="send" />
-        </div>
-    </form>
+<?php
+        if(isset($_FILES['file'])){
+            $file = $_FILES['file'];
+            //File Related Data
+            $filename = $file['name'];
+            $temp_path = $file['tmp_name'];
+            $size = $file['size'];
+            $error = $file['error'];
 
-    <?php 
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "registrationdb";
+            $upload_folder = "upload/";
+            $destination = $upload_folder . basename($filename);
 
-        // Database Connection
-        $conn = new mysqli($host,$username,$password,$database);
-        // Connection Checking
-        if($conn->connect_error){
-            die("Connection Failed" . $conn->connect_error);
+            //File move to Server
+            if($error === 0){
+                if(move_uploaded_file($temp_path,$destination)){
+                    echo "File Uploaded successfully";
+                }else{
+                    echo "File Uploading Have a Serious Issue for not Uploading";
+                }
+            }else{
+                echo "File Uploading Have an Error Throw";
+            }
         }else{
-            echo "Database Connection Successfully";
+            echo "Not selected any type of file";
         }
-    ?>
-</body>
-</html>
+?>
