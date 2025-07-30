@@ -14,7 +14,6 @@
             line-height: 110px;
             font-weight: 700;
             text-transform: capitalize;
-
         }
     </style>
 </head>
